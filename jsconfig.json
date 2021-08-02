@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        // make all imports without a dot '.' prefix relative to the base url
+        "baseUrl": "."
+    }
+}

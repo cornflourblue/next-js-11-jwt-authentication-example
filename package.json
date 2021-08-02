@@ -1,0 +1,22 @@
+{
+    "name": "next-js-jwt-authentication-example",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start"
+    },
+    "dependencies": {
+        "@hookform/resolvers": "^2.6.1",
+        "express-jwt": "^6.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "next": "^11.0.1",
+        "prop-types": "^15.7.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-hook-form": "^7.12.1",
+        "rxjs": "^7.3.0",
+        "yup": "^0.32.9"
+    }
+}

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 import { NavLink } from '.';
 import { userService } from 'services';
@@ -7,7 +6,6 @@ import { userService } from 'services';
 export { Nav };
 
 function Nav() {
-    const router = useRouter();
     const [user, setUser] = useState(null);
 
     useEffect(() => {

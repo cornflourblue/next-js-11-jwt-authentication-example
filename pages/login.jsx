@@ -30,7 +30,7 @@ function Login() {
     const { errors } = formState;
 
     function onSubmit({ username, password }) {
-        userService.login(username, password)
+        return userService.login(username, password)
             .then(() => {
                 // get return url from query parameters or default to '/'
                 const returnUrl = router.query.returnUrl || '/';

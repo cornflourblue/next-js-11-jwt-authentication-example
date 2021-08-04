@@ -16,9 +16,18 @@ function App({ Component, pageProps }) {
         // run auth check on initial load
         authCheck(router.asPath);
 
+        // set authorized to false to hide page content while changing routes
+        const hideContent = () => setAuthorized(false);
+        router.events.on('routeChangeStart', hideContent);
+
         // run auth check on route change
         router.events.on('routeChangeComplete', authCheck)
-        return () => router.events.off('routeChangeComplete', authCheck);
+
+        // unsubscribe from events in useEffect return function
+        return () => {
+            router.events.off('routeChangeStart', hideContent);
+            router.events.off('routeChangeComplete', authCheck);
+        }
     }, []);
 
     function authCheck(url) {
@@ -46,18 +55,19 @@ function App({ Component, pageProps }) {
             </Head>
 
             <div className="app-container bg-light">
-                {authorized &&
-                    <>
-                        <Nav />
-                        <div className="container pt-4 pb-4">
-                            <Component {...pageProps} />
-                        </div>
-                    </>
-                }
+                <Nav />
+                <div className="container pt-4 pb-4">
+                    {authorized &&
+                        <Component {...pageProps} />
+                    }
+                </div>
             </div>
 
             {/* credits */}
             <div className="text-center mt-4">
+                <p>
+                    <a href="https://jasonwatmore.com/post/2021/08/04/next-js-11-jwt-authentication-tutorial-with-example-app" target="_top">Next.js 11 - JWT Authentication Tutorial with Example App</a>
+                </p>
                 <p>
                     <a href="https://jasonwatmore.com" target="_top">JasonWatmore.com</a>
                 </p>
